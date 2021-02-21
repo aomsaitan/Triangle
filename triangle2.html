@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
+  <title>Triangle Program</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Roboto";
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 64px;
+      font-style: normal;
+      font-weight: bold;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 48px;
+      margin: 0px;
+      line-height: 81px;
+      font-weight: normal;
+      background-color: #ff9494;
+      width: 239px;
+      border-radius: 0px 20px 20px 0px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      height: 500px;
+    }
+
+    .rightContainer {
+      border-left: #000000 2px solid;
+      height: 500px;
+    }
+
+    .form {
+      padding: 20px 60px;
+    }
+
+    .formControl {
+      position: relative;
+      height: 80px;
+      margin-bottom: 30px;
+    }
+
+    .formControl label {
+      display: inline-block;
+      font-size: 36px;
+      margin-right: 10px;
+    }
+
+    .formControl input {
+      display: inline-block;
+      font-size: 18px;
+      padding-left: 10px;
+      background-color: #ecedf1;
+      width: 500px;
+      height: 48px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .formControl small {
+      font-size: 18px;
+      color: red;
+      position: absolute;
+      top: 60px;
+      left: 130px;
+    }
+
+    button {
+      position: relative;
+      left: 410px;
+      bottom: 0px;
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
+      background-color: #6268ff;
+      width: 220px;
+      height: 63px;
+      padding: 0px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .resultContainer {
+      position: relative;
+      /* top: 20px; */
+      left: 60px;
+      font-size: 36px;
+      text-align: center;
+      line-height: 100px;
+      background-color: #ecedf1;
+      width: 670px;
+      height: 400px;
+      border-radius: 5px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0%;
+      width: 99%;
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      background-color: #393939;
+    }
+
+    img {
+      height: 40%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Triangle Program</h1>
+  <div class="container">
+    <!---------------------------------------------------------- ฝั่งซ้าย --------------------------------------------------------------------->
+    <div class="leftContainer">
+      <h2>Input</h2>
+      <form class="form" id="form">
+        <!----------------------------------------------------------- side1 ----------------------------------------------------------->
+        <div class="formControl">
+          <label> Side 1: </label>
+          <input type="text" placeholder="Enter the length of sides" id="side1" required />
+          <small id="error1"></small>
+        </div>
+        <!----------------------------------------------------------- side2 ----------------------------------------------------------->
+        <div class="formControl">
+          <label> Side 2: </label>
+          <input type="text" placeholder="Enter the length of sides" id="side2" required />
+          <small id="error2"></small>
+        </div>
+        <!----------------------------------------------------------- side3 ----------------------------------------------------------->
+        <div class="formControl">
+          <label> Side 3: </label>
+          <input type="text" placeholder="Enter the length of sides" id="side3" required />
+          <small id="error3"></small>
+        </div>
+
+        <button type="submit">Enter</button>
+      </form>
+    </div>
+    <!----------------------------------------------------------- ฝั่งขวา ----------------------------------------------------------->
+    <div class="rightContainer">
+      <div>
+        <h2>Result</h2>
+      </div>
+      <div class="resultContainer">
+        <p id="result"></p>
+        <img style="visibility: hidden;" id="img" src="" />
+      </div>
+
+
+    </div>
+  </div>
+
+  <footer>
+    Copyright © 2021 IT Entrepteneurship and Management. All Rights Reserved.
+    Developed by 61010756 & 61011104
+  </footer>
+</body>
+
+<script>
+  document.getElementById("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    InputValidate();
+
+  });
+
+  function InputValidate() {
+    const side1 = document.getElementById("side1").value;
+    const side2 = document.getElementById("side2").value;
+    const side3 = document.getElementById("side3").value;
+
+    var text = "Invalid Input";
+    var isValid_side1 = false;
+    var isValid_side2 = false;
+    var isValid_side3 = false;
+    var isValid = false;
+
+
+    if (side1 == " " || isNaN(side1) || side1 < 0 || side1 > 4294967296) {
+      document.getElementById("error1").innerHTML = text;
+      isValid_side1 = false;
+      isValid = false;
+    }
+    else {
+      document.getElementById("error1").innerHTML = " ";
+      isValid_side1 = true;
+    }
+    if (side2 == " " || isNaN(side2) || side2 < 0 || side2 > 4294967296) {
+      document.getElementById("error2").innerHTML = text;
+      isValid_side2 = false;
+      isValid = false;
+    }
+    else {
+      document.getElementById("error2").innerHTML = " ";
+      isValid_side2 = true;
+    }
+    if (side3 == " " || isNaN(side3) || side3 < 0 || side3 > 4294967296) {
+      document.getElementById("error3").innerHTML = text;
+      isValid_side3 = false;
+      isValid = false;
+    }
+    else {
+      document.getElementById("error3").innerHTML = " ";
+      isValid_side3 = true;
+    }
+    if (isValid_side1 == true && isValid_side2 == true && isValid_side3 == true) {
+      isValid = true;
+    }
+    var a = parseFloat(side1);
+    var b = parseFloat(side2);
+    var c = parseFloat(side3)
+    Calcalation(isValid, a, b, c);
+  }
+
+  function Calcalation(isValid, side1, side2, side3) {
+    if (isValid == false) {
+      document.getElementById("result").innerHTML = "Invalid Input";
+      var img = document.getElementById("img");
+      img.style.visibility = "hidden";
+    }
+    if (isValid == true) {
+      if ((side1 + side2 <= side3) || (side1 + side3 <= side2) || (side2 + side3 <= side1)) {
+        document.getElementById("result").innerHTML = "It is not a triangle";
+        var img = document.getElementById("img");
+        img.style.visibility = "hidden";
+      }
+      else if (side1 == side2 && side2 == side3 && side1 == side3) {
+        document.getElementById("result").innerHTML = "Equilateral Triangle";
+        var img = document.getElementById("img");
+        img.src = "https://i.imgur.com/Hg6KWTu.png";
+        img.style.visibility = "visible";
+      }
+      else if ((((side1 * side1) + (side2 * side2)) == (side3 * side3)) ||
+        (((side1 * side1) + (side3 * side3)) == (side2 * side2)) ||
+        (((side3 * side3) + (side2 * side2)) == (side1 * side1))) {
+        document.getElementById("result").innerHTML = "Right Triangle";
+        var img = document.getElementById("img");
+        img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Triangle.Right.svg/1200px-Triangle.Right.svg.png";
+        img.style.visibility = "visible";
+      }
+      else if ((side1 == side2 && side1 != side3) || (side1 == side3 && side1 != side2) || (side2 == side3 && side1 != side3)) {
+        document.getElementById("result").innerHTML = "Isosceles Triangle";
+        var img = document.getElementById("img");
+        img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Triangle-isosceles.svg/1200px-Triangle-isosceles.svg.png";
+        img.style.visibility = "visible";
+      }
+      else if (side1 != side2 && side1 != side3 && side2 != side3) {
+        document.getElementById("result").innerHTML = "Scalene Triangle";
+        var img = document.getElementById("img");
+        img.src = "https://images.twinkl.co.uk/tr/image/upload/illustation/scalene-triangle-black-and-white.png";
+        img.style.visibility = "visible";
+      }
+
+
+
+    }
+
+    // console.log(typeof side1);
+  }
+</script>
+
+</html>
